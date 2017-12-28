@@ -1,0 +1,40 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+
+class Solution
+{
+    static void Main(String[] args)
+    {
+        int q = Convert.ToInt32(Console.ReadLine());
+        for (int a0 = 0; a0 < q; a0++)
+        {
+            string s = Console.ReadLine();
+            // your code goes here
+            Boolean valid = false;
+            long firstx = -1;
+            // Try each possible starting number
+            for (int i = 1; i <= s.Length / 2; ++i)
+            {
+                long x = long.Parse(s.Substring(0, i));
+                firstx = x;
+                // Build up sequence starting with this number
+                StringBuilder test = new StringBuilder(x.ToString());
+                while (test.Length < s.Length)
+                {
+                    test.Append((++x).ToString());
+                }
+                // Compare to original
+                if (test.ToString().Equals(s))
+                {
+                    valid = true;
+                    break;
+                }
+            }
+            Console.WriteLine(valid ? "YES " + firstx : "NO");
+        }
+    }
+}
+
