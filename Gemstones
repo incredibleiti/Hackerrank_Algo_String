@@ -1,0 +1,44 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+
+class Solution
+{
+    static int gemstones(string[] arr)
+    {
+        Dictionary<char, int> gemdict = new Dictionary<char, int>();
+        for (int j = 0; j < arr.Length; j++)
+        {
+            char[] chararr = arr[j].Distinct().ToArray();
+
+            for (int i = 0; i < chararr.Length; i++)
+            {
+                if (gemdict.ContainsKey(chararr[i]))
+                {
+                    gemdict[chararr[i]]+=1;
+                }
+                else
+                {
+                    gemdict.Add(chararr[i], 1);
+                }
+            }
+        }
+
+        return gemdict.Where(x => x.Value == arr.Length).Count();
+    }
+
+    static void Main(String[] args)
+    {
+        int n = Convert.ToInt32(Console.ReadLine());
+        string[] arr = new string[n];
+        for (int arr_i = 0; arr_i < n; arr_i++)
+        {
+            arr[arr_i] = Console.ReadLine();
+        }
+        int result = gemstones(arr);
+        Console.WriteLine(result);
+    }
+}
+
