@@ -1,0 +1,24 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+
+class Solution
+{
+    static int beautifulBinaryString(string b)
+    {
+        // Complete this function
+        string b_ = b.Replace("010", "");
+        return (b.Length - b_.Length) / 3;
+    }
+
+    static void Main(String[] args)
+    {
+        int n = Convert.ToInt32(Console.ReadLine());
+        string b = Console.ReadLine();
+        int result = beautifulBinaryString(b);
+        Console.WriteLine(result);
+    }
+}
+
